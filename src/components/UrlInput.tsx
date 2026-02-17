@@ -34,13 +34,13 @@ export function UrlInput() {
 
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-2xl mx-auto">
-      <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-800 rounded-xl p-2 focus-within:border-cyan-500/50 transition-colors">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-2 focus-within:border-cyan-500/50 transition-colors">
         <input
           type="text"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="https://your-landing-page.com"
-          className="flex-1 bg-transparent px-4 py-3 text-zinc-100 placeholder:text-zinc-500 outline-none text-lg"
+          className="flex-1 bg-transparent px-4 py-3 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 outline-none text-base sm:text-lg"
           disabled={loading}
         />
         <button

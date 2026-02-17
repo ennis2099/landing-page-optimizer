@@ -7,7 +7,7 @@
 - [x] 1.5 Configure Prisma with Neon PostgreSQL — create `prisma/schema.prisma` with User, AnalysisReport, ComparisonReport, Account, Session, VerificationToken models
 - [ ] 1.6 Run `prisma migrate dev` to create initial database schema
 - [x] 1.7 Create `.env.local` template with all required env vars (DATABASE_URL, NEXTAUTH_SECRET, NEXTAUTH_URL, ANTHROPIC_API_KEY, STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, EMAIL_SERVER, EMAIL_FROM)
-- [ ] 1.8 Create GitHub repo and push initial commit
+- [x] 1.8 Create GitHub repo and push initial commit
 
 ## 2. Authentication & User System (REQ-US-001, REQ-US-002)
 
@@ -67,7 +67,7 @@
 - [x] 7.2 Create `GET /api/report/[id]` — fetch report by ID, apply plan gating (blur suggestions for FREE)
 - [x] 7.3 Create `POST /api/compare` — accept two URLs, run analysis on both, generate comparison summary, save ComparisonReport (AGENCY only)
 - [x] 7.4 Create `GET /api/history` — return paginated list of user's past reports
-- [ ] 7.5 Create `GET /api/report/[id]/pdf` — generate and stream PDF report (AGENCY only)
+- [x] 7.5 Create `GET /api/report/[id]/pdf` — generate and stream PDF report (AGENCY only)
 - [x] 7.6 Implement rate limiting (`lib/rate-limit.ts`) — FREE: 3/month, PRO/AGENCY: 60/hour
 
 ## 8. Frontend — Landing Page (REQ-FE-001)
@@ -101,23 +101,23 @@
 ## 11. PDF Export (REQ-PE-001, REQ-PE-002)
 
 - [x] 11.1 Create PDF report template (HTML-based for browser print-to-PDF) — overall score, 7 dimensions, issues, suggestions
-- [ ] 11.2 Implement white-label support — accept custom logo URL and primary color from AGENCY user settings
+- [x] 11.2 Implement white-label support — accept custom logo URL and primary color from AGENCY user settings
 - [x] 11.3 Wire up PDF generation to `GET /api/report/[id]/pdf` route with AGENCY plan check
 
 ## 12. History & Trends (REQ-HT-001, REQ-HT-002, REQ-HT-003)
 
 - [x] 12.1 Implement report persistence — save full report to DB for authenticated users after analysis
 - [x] 12.2 Implement history list API with pagination and sorting
-- [ ] 12.3 Implement re-analysis feature — "Re-analyze" button on historical reports
-- [ ] 12.4 Implement trend data aggregation — group reports by URL, compute score deltas
+- [x] 12.3 Implement re-analysis feature — "Re-analyze" button on historical reports
+- [x] 12.4 Implement trend data aggregation — group reports by URL, compute score deltas
 
 ## 13. Responsive & Polish (REQ-FE-005, REQ-FE-006)
 
-- [ ] 13.1 Implement responsive layouts for all pages (desktop 1440px, tablet 768px, mobile 375px)
-- [ ] 13.2 Implement dark/light mode toggle with localStorage persistence
-- [ ] 13.3 Add loading skeletons for report and dashboard pages
-- [ ] 13.4 Add error boundary and user-friendly error pages (404, 500, analysis failed)
-- [ ] 13.5 Add meta tags, OG image, and favicon for the app itself
+- [x] 13.1 Implement responsive layouts for all pages (desktop 1440px, tablet 768px, mobile 375px)
+- [x] 13.2 Implement dark/light mode toggle with localStorage persistence
+- [x] 13.3 Add loading skeletons for report and dashboard pages
+- [x] 13.4 Add error boundary and user-friendly error pages (404, 500, analysis failed)
+- [x] 13.5 Add meta tags, OG image, and favicon for the app itself
 
 ## 14. Testing & Deployment
 

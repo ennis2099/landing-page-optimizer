@@ -22,6 +22,8 @@ model User {
   plan                 Plan               @default(FREE)
   stripeCustomerId     String?
   stripeSubscriptionId String?
+  whitelabelLogo       String?
+  whitelabelColor      String?
   analysisCount        Int                @default(0)
   monthResetAt         DateTime           @default(now())
   reports              AnalysisReport[]

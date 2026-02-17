@@ -10,8 +10,18 @@
 }
 
 body {
-  background: #09090b;
-  color: #fafafa;
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+:root {
+  --color-background: #ffffff;
+  --color-foreground: #18181b;
+}
+
+.dark {
+  --color-background: #09090b;
+  --color-foreground: #fafafa;
 }
 
 @keyframes score-fill {

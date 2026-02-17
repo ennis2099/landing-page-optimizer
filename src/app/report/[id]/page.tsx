@@ -6,6 +6,8 @@ import { DimensionBar } from "@/components/DimensionBar";
 import { IssueList } from "@/components/IssueList";
 import { SuggestionCard } from "@/components/SuggestionCard";
 import { LockedSection } from "@/components/LockedSection";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { ReportSkeleton } from "@/components/ReportSkeleton";
 import { Layout, Eye, FileText, Zap, Gauge, Search, BarChart3, ArrowLeft, Download } from "lucide-react";
 import Link from "next/link";
 
@@ -45,15 +47,14 @@ export default function ReportPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <svg className="animate-spin h-8 w-8 text-cyan-400 mx-auto mb-4" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
-          </svg>
-          <p className="text-zinc-400">Loading report...</p>
-        </div>
-      </div>
+      <main className="min-h-screen">
+        <nav className="flex items-center justify-between px-4 sm:px-6 py-4 max-w-6xl mx-auto border-b border-zinc-200 dark:border-zinc-800">
+          <div className="w-12" />
+          <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-sky-400 bg-clip-text text-transparent">PageScore</span>
+          <div className="w-12" />
+        </nav>
+        <ReportSkeleton />
+      </main>
     );
   }
 
@@ -67,26 +68,29 @@ export default function ReportPage() {
 
   return (
     <main className="min-h-screen pb-20">
-      <nav className="flex items-center justify-between px-6 py-4 max-w-6xl mx-auto border-b border-zinc-800">
+      <nav className="flex items-center justify-between px-4 sm:px-6 py-4 max-w-6xl mx-auto border-b border-zinc-200 dark:border-zinc-800">
         <Link href="/" className="flex items-center gap-2 text-zinc-400 hover:text-zinc-200 transition-colors">
           <ArrowLeft className="w-4 h-4" /> Back
         </Link>
         <Link href="/" className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-sky-400 bg-clip-text text-transparent">
           PageScore
         </Link>
-        <button className="flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-200 transition-colors">
-          <Download className="w-4 h-4" /> PDF
-        </button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <button className="flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-200 transition-colors">
+            <Download className="w-4 h-4" /> PDF
+          </button>
+        </div>
       </nav>
 
-      <div className="max-w-4xl mx-auto px-6 pt-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-8">
         <div className="mb-8">
           <p className="text-sm text-zinc-500 mb-1">Analysis for</p>
           <h1 className="text-xl font-semibold truncate">{report.url}</h1>
-          <p className="text-xs text-zinc-600 mt-1">{new Date(report.createdAt).toLocaleDateString()}</p>
+          <p className="text-xs text-zinc-400 dark:text-zinc-600 mt-1">{new Date(report.createdAt).toLocaleDateString()}</p>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center gap-8 mb-12 p-8 bg-zinc-900/50 border border-zinc-800 rounded-xl">
+        <div className="flex flex-col md:flex-row items-center gap-8 mb-12 p-6 sm:p-8 bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl">
           <ScoreRing score={report.overallScore} grade={report.letterGrade} size={180} />
           <div className="flex-1 w-full space-y-1">
             <DimensionBar label="Structure" score={report.structureScore} icon={<Layout className="w-4 h-4" />} />
@@ -130,7 +134,7 @@ export default function ReportPage() {
           ) : report.copyRewrites && report.copyRewrites.length > 0 ? (
             <div className="space-y-4">
               {report.copyRewrites.map((r: any, i: number) => (
-                <div key={i} className="p-4 bg-zinc-900/50 border border-zinc-800 rounded-lg">
+                <div key={i} className="p-4 bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-lg">
                   <p className="text-xs text-zinc-500 mb-1">{r.element}</p>
                   <p className="text-sm text-zinc-400 line-through mb-3">{r.original}</p>
                   <div className="space-y-2">

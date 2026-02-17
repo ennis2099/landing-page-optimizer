@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function ComparePage() {
   const [urlA, setUrlA] = useState("");
@@ -34,12 +35,12 @@ export default function ComparePage() {
 
   return (
     <main className="min-h-screen">
-      <nav className="flex items-center justify-between px-6 py-4 max-w-6xl mx-auto border-b border-zinc-800">
+      <nav className="flex items-center justify-between px-4 sm:px-6 py-4 max-w-6xl mx-auto border-b border-zinc-200 dark:border-zinc-800">
         <Link href="/dashboard" className="flex items-center gap-2 text-zinc-400 hover:text-zinc-200 transition-colors">
           <ArrowLeft className="w-4 h-4" /> Dashboard
         </Link>
         <Link href="/" className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-sky-400 bg-clip-text text-transparent">PageScore</Link>
-        <div />
+        <ThemeToggle />
       </nav>
       <div className="max-w-2xl mx-auto px-6 pt-16">
         <h1 className="text-2xl font-bold text-center mb-2">Competitor Comparison</h1>
@@ -50,17 +51,17 @@ export default function ComparePage() {
             <input
               type="text" value={urlA} onChange={e => setUrlA(e.target.value)}
               placeholder="https://your-page.com"
-              className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg outline-none focus:border-cyan-500/50 transition-colors"
+              className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg outline-none focus:border-cyan-500/50 transition-colors"
               disabled={loading}
             />
           </div>
-          <div className="text-center text-zinc-600 text-sm">vs</div>
+          <div className="text-center text-zinc-500 dark:text-zinc-600 text-sm">vs</div>
           <div>
-            <label className="text-sm text-zinc-400 mb-1 block">Competitor</label>
+            <label className="text-sm text-zinc-500 dark:text-zinc-400 mb-1 block">Competitor</label>
             <input
               type="text" value={urlB} onChange={e => setUrlB(e.target.value)}
               placeholder="https://competitor.com"
-              className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg outline-none focus:border-cyan-500/50 transition-colors"
+              className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg outline-none focus:border-cyan-500/50 transition-colors"
               disabled={loading}
             />
           </div>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { BarChart3, Plus, TrendingUp } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface ReportSummary {
   id: string;
@@ -48,11 +49,12 @@ export default function DashboardPage() {
 
   return (
     <main className="min-h-screen">
-      <nav className="flex items-center justify-between px-6 py-4 max-w-6xl mx-auto border-b border-zinc-800">
+      <nav className="flex items-center justify-between px-4 sm:px-6 py-4 max-w-6xl mx-auto border-b border-zinc-200 dark:border-zinc-800">
         <Link href="/" className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-sky-400 bg-clip-text text-transparent">PageScore</Link>
         <div className="flex items-center gap-3">
           <span className="text-xs px-2 py-1 rounded border border-zinc-700 text-zinc-400">{plan}</span>
-          <span className="text-sm text-zinc-400">{session?.user?.email}</span>
+          <span className="text-sm text-zinc-400 hidden sm:inline">{session?.user?.email}</span>
+          <ThemeToggle />
         </div>
       </nav>
       <div className="max-w-4xl mx-auto px-6 pt-8">
@@ -73,7 +75,7 @@ export default function DashboardPage() {
         ) : (
           <div className="space-y-2">
             {reports.map(report => (
-              <Link key={report.id} href={`/report/${report.id}`} className="flex items-center gap-4 p-4 bg-zinc-900/50 border border-zinc-800 rounded-lg hover:border-zinc-700 transition-colors">
+              <Link key={report.id} href={`/report/${report.id}`} className="flex items-center gap-4 p-4 bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-lg hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
                 <span className={`text-2xl font-bold w-12 text-center ${gradeColor(report.letterGrade)}`}>{report.letterGrade}</span>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm text-zinc-200 truncate">{report.url}</p>
